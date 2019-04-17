@@ -1,0 +1,44 @@
+package Utilitarios;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.touch.TouchActions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.WebDriver;
+
+public class ActionsBase {
+	
+	public void clickcomponent(WebDriver driver, By idcomponent){
+		WebElement element = driver.findElement(idcomponent);
+		element.click();
+	}
+	
+	public void sendkeys(WebDriver driver, By Idinput, String textToType){
+		WebElement input = driver.findElement(Idinput);
+		input.sendKeys(textToType);
+	}
+	
+	public void combobox(WebDriver driver, String comboXpath, String value){
+		By combobox = By.xpath(comboXpath);
+		Select comboBox = new Select(driver.findElement(combobox));
+		comboBox.selectByValue(value);
+	}
+	
+	public void scrolliOS(WebDriver driver) {	
+		int scrollXStart = (int) (getSizePage(driver).getWidth() * 0.2906);
+		int scrollYStart = (int) (getSizePage(driver).getHeight() * 0.4648);
+		int scrollEnd = (int) (getSizePage(driver).getHeight() * 0.4648);
+
+		TouchActions action = new TouchActions(driver);
+   		action.press(scrollXStart, scrollYStart);
+  		action.moveTo(0, -scrollEnd).release().perform();
+    }
+
+	public Dimension getSizePage(WebDriver driver){
+		Dimension size = driver.manage().window().getSize();
+		return size;
+	}
+	
+}

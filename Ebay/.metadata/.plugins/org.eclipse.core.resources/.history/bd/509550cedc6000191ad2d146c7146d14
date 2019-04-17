@@ -1,0 +1,50 @@
+package EbayComponents;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import Utilitarios.ActionsBase;
+
+public class EbayPage extends ActionsBase {
+
+	WebDriver driver;
+	public By txtsearch;
+	public By btnSearch;
+	public By sectionbrand;
+	public By chkgucci;
+	public By chkpuma;
+	
+	public EbayPage(WebDriver driver){
+		this.driver=driver;
+		setlocators();
+	}
+
+	private void setlocators() {
+		txtsearch= By.id(Ebaylocator.textboxsearch);
+		btnSearch=By.id(Ebaylocator.btnsearch);
+		sectionbrand = By.xpath(Ebaylocator.checkboxbrand);
+		chkgucci = By.id(Ebaylocator.checkboxgucci);
+		chkpuma = By.id(Ebaylocator.checkboxpuma);
+	}
+	
+	public void write(String text){
+		sendkeys(driver, txtsearch, text);
+	}
+	
+	public void click(){
+		clickcomponent(driver, btnSearch);
+	}
+	
+	public void scrolltoelement(){
+		moverScrolltoelement(driver, sectionbrand);
+	}
+	
+	public void movecurse(){
+		movecursor(driver,chkgucci);
+	}
+	
+	public void scrolltoelementpuma(){
+		moverScrolltoelement(driver, chkpuma);
+	}
+	
+}

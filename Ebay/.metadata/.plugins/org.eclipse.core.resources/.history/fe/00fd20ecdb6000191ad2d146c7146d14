@@ -1,0 +1,10 @@
+package EbayComponents;
+
+public class Ebaylocator {
+
+	public final static String textboxsearch ="gh-ac";
+	public final static String btnsearch = "gh-btn";
+	public final static String checkboxbrand = "//*[@id=\"w3-w0-w2-w2\"]/ul";
+	public final static String checkboxgucci = "w3-w0-w2-w2-w2";
+	public final static String checkboxpuma = "w_1555442065978_cbx";
+}

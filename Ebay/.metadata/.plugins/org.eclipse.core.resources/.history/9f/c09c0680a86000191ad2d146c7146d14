@@ -1,0 +1,24 @@
+package Ebayshop;
+
+import Utilitarios.ActionsBase;
+
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import EbayComponents.EbayPage;
+
+public class Ebaytest {
+	public WebDriver driver;
+	
+	@Test
+	public void testGoogleSearch() throws InterruptedException {
+	driver = new ChromeDriver();
+	driver.get("https://www.ebay.com/");
+	Thread.sleep(3);
+	EbayPage ebay = new EbayPage(driver);
+	ebay.write("zapatos");
+	
+	}
+	
+}

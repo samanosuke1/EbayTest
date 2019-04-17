@@ -1,0 +1,13 @@
+package Ebayshop;
+
+import Utilitarios.ActionsBase;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Ebaytest extends ActionsBase {
+	
+	WebDriver driver = new ChromeDriver();
+	driver.get("https://www.ebay.com/");
+	
+	
+}

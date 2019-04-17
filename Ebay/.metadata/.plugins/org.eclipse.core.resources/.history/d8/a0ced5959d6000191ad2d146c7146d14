@@ -1,0 +1,9 @@
+package EbayComponents;
+
+public class Ebaylocator {
+
+	public static String textboxsearch ="gh-ac";
+	public static btnsearch = "gh-btn";
+	public static checkboxbrand = "w_1555442065978_cbx";
+	
+}

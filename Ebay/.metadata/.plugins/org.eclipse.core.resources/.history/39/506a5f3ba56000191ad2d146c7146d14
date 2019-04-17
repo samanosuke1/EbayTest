@@ -1,0 +1,28 @@
+package Utilitarios;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.WebDriver;
+
+public class ActionsBase {
+	
+	public void click(WebDriver driver, String id){
+		By byElem = By.id(id);
+		WebElement element = driver.findElement(byElem);
+		element.click();
+	}
+	
+	public void sendkeys(WebDriver driver, String Idinput, String textToType){
+		By textbox = By.xpath(Idinput);
+		WebElement input = driver.findElement(textbox);
+		input.sendKeys(textToType);
+	}
+	
+	public void checkbox(WebDriver driver, String comboXpath, String value){
+		By combobox = By.xpath(comboXpath);
+		Select comboBox = new Select(driver.findElement(combobox));
+		comboBox.selectByValue(value);
+	}
+}
