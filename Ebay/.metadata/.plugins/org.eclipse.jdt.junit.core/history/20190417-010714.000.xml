@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="Ebaytest (1)" project="Ebay" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="Ebayshop.Ebaytest" time="15.511">
-    <testcase name="testGoogleSearch" classname="Ebayshop.Ebaytest" time="15.511"/>
-  </testsuite>
-</testrun>

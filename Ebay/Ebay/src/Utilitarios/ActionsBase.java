@@ -26,5 +26,9 @@ public class ActionsBase {
 	public void Scroll(WebDriver driver) {
 		((JavascriptExecutor)driver).executeScript("scroll(0,-100)");
 	}
-		
+	
+	public void mouseover(WebDriver driver, By locator){
+		Actions builder = new Actions(driver);
+		builder.moveToElement(driver.findElement(locator)).perform();
+	}
 }

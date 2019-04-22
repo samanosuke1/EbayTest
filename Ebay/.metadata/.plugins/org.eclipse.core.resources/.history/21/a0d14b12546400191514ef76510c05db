@@ -1,0 +1,24 @@
+package Drivers;
+
+public class DriverChrome {
+
+	@Override
+	public WebDriver instanceDriver() {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\miluska.gomez\\Desktop\\New folder\\chromedriver.exe");
+		driver = new ChromeDriver();
+		return driver;
+	}
+
+	@Override
+	public WebDriver driver() {
+		// TODO Auto-generated method stub
+		return driver;
+	}
+
+	@Override
+	public void freeDrive() {
+		// TODO Auto-generated method stub
+		driver.quit();
+	}
+
+}

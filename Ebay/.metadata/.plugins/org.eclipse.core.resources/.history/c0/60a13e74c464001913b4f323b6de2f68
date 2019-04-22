@@ -1,0 +1,43 @@
+package Ebayshop;
+
+import Drivers.InstanceDriver;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+
+import EbayComponents.EbayPage;
+
+public class Ebaytest {
+	public WebDriver driver;
+	
+	 @Before
+	  public void createAndStartService() {
+		InstanceDriver inst = new InstanceDriver();
+		inst.getDriver("chrome");
+		driver = inst.driver();
+	  }
+
+	@Test
+	public void testGoogleSearch() throws InterruptedException {
+		
+		driver.get("https://www.ebay.com/");
+		Thread.sleep(3);
+		EbayPage ebay = new EbayPage(driver);
+		ebay.writesearch("zapatos");
+		ebay.clicksearch();
+		ebay.scrolltobrand();
+		ebay.scrolloverbrand();
+		ebay.selectPuma();
+		ebay.scrolltolblresult();
+		ebay.selectsize10();
+		System.out.print(ebay.gettextresult());	
+		ebay.mouseoverorder();
+	
+		List<String> listaPlanyMontoActual = new ArrayList<String>();
+		
+	}
+	
+}

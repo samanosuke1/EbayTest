@@ -1,12 +1,13 @@
 package Ebayshop;
 
-import java.io.File;
-import java.io.IOException;
+import Drivers.InstanceDriver;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 
 import EbayComponents.EbayPage;
 
@@ -14,10 +15,11 @@ public class Ebaytest {
 	public WebDriver driver;
 	
 	 @Before
-	  public void createAndStartService() throws IOException {
-		 File file=new File ("navegador/chromedriver.exe");
-		 System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-			driver = new ChromeDriver();  
+	  public void createAndStartService() {
+		InstanceDriver inst = new InstanceDriver();
+		inst.getDriver("chrome");
+		driver = inst.driver();
+		driver.manage().window().maximize();
 	  }
 
 	@Test
@@ -34,7 +36,31 @@ public class Ebaytest {
 		ebay.scrolltolblresult();
 		ebay.selectsize10();
 		System.out.print(ebay.gettextresult());	
+		ebay.mouseoverorder();
 	
+		List<String> resultlistnow = new ArrayList<String>();
+		resultlistnow.add(ebay.gettextlistresult1());
+		resultlistnow.add(ebay.gettextlistresult2());
+		resultlistnow.add(ebay.gettextlistresult3());
+		resultlistnow.add(ebay.gettextlistresult4());
+		resultlistnow.add(ebay.gettextlistresult5());
+		System.out.println(resultlistnow);
+		
+		List<String> resultlistExpected = new ArrayList<String>();
+		resultlistExpected.add("Puma Pop Cat diapositivas (36026523) Sandalias De Playa Flip Flop Zapatos Zapatillas diapositiva\nS/. 108.40\n¡Cómpralo ahora!\nEnvío internacional gratis");
+		resultlistExpected.add("Las diapositivas del gato Puma plomo (36026302) Deportes Sandalias Flip Flop Zapatos Zapatillas diapositiva\nS/. 98.51\n¡Cómpralo ahora!\n+S/. 16.47 por el envío");
+		resultlistExpected.add("Las diapositivas del gato Puma plomo (36026301) Deportes Sandalias Flip Flop Zapatos Zapatillas diapositiva\nS/. 98.51\n¡Cómpralo ahora!\n+S/. 16.47 por el envío");
+		resultlistExpected.add("Las diapositivas del gato Puma plomo (36026308) Deportes Sandalias Flip Flop Zapatos Zapatillas diapositiva\nS/. 98.51\n¡Cómpralo ahora!\n+S/. 16.47 por el envío");
+		resultlistExpected.add("Puma Cat diapositivas (36026321) Lead Deportes Sandalias Flip Flop Zapatos Zapatillas diapositiva\nS/. 98.51\n¡Cómpralo ahora!\n+S/. 16.47 por el envío");
+		System.out.println("\n" + resultlistExpected);
+		
+		boolean result = true;
+		for(int i= 0; i < resultlistnow.size(); i++)
+			if (!resultlistnow.get(i).equals(resultlistExpected.get(i)))
+				result = false;
+		
+		Assert.assertEquals(result, true);
+		
 	}
 	
 }
